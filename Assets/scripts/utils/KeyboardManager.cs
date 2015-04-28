@@ -48,30 +48,37 @@ public class KeyboardManager
     /// <returns></returns>
     public static void updateKey()
     {
-        List<KeyCode> keys = new List<KeyCode>(keyDownDict.Keys);
-        foreach (KeyCode key in keys)
+        List<KeyCode> keys;
+        if (keyDownDict != null)
         {
-            List<HandlerDelegate> list = keyDownDict[key];
-            if (list != null && Input.GetKeyDown(key))
+            keys = new List<KeyCode>(keyDownDict.Keys);
+            foreach (KeyCode key in keys)
             {
-                for (int i = list.Count - 1; i >= 0; --i)
+                List<HandlerDelegate> list = keyDownDict[key];
+                if (list != null && Input.GetKeyDown(key))
                 {
-                    HandlerDelegate handler = list[i];
-                    handler.Invoke();
+                    for (int i = list.Count - 1; i >= 0; --i)
+                    {
+                        HandlerDelegate handler = list[i];
+                        handler.Invoke();
+                    }
                 }
             }
         }
 
-        keys = new List<KeyCode>(keyUpDict.Keys);
-        foreach (KeyCode key in keys) 
+        if (keyUpDict != null)
         {
-            List<HandlerDelegate> list = keyUpDict[key];
-            if (list != null && Input.GetKeyUp(key))
+            keys = new List<KeyCode>(keyUpDict.Keys);
+            foreach (KeyCode key in keys)
             {
-                for (int i = list.Count - 1; i >=0 ; --i)
+                List<HandlerDelegate> list = keyUpDict[key];
+                if (list != null && Input.GetKeyUp(key))
                 {
-                    HandlerDelegate handler = list[i];
-                    handler.Invoke();
+                    for (int i = list.Count - 1; i >= 0; --i)
+                    {
+                        HandlerDelegate handler = list[i];
+                        handler.Invoke();
+                    }
                 }
             }
         }
