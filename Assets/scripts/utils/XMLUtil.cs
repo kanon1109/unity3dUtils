@@ -21,8 +21,11 @@ class XMLUtil
     /// <returns>序列化后的存放数据的List</returns>
     public static List<T>parse<T>(String xmlFilePath, String rootNodeName)
     {
+        XmlReaderSettings settings = new XmlReaderSettings();
+        settings.IgnoreComments = true;
+        XmlReader reader = XmlReader.Create(xmlFilePath, settings);
         XmlDocument doc = new XmlDocument();
-        doc.Load(xmlFilePath);
+        doc.Load(reader);
         //节点列表
         XmlNodeList nodeList = doc.SelectNodes(rootNodeName);
         if (nodeList == null) return null;
@@ -64,8 +67,11 @@ class XMLUtil
     /// <returns序列化后的存放数据的Dictionary></returns>
     public static Dictionary<String, T> parse<T>(String xmlFilePath, String rootNodeName, String fieldname)
     {
+        XmlReaderSettings settings = new XmlReaderSettings();
+        settings.IgnoreComments = true;
+        XmlReader reader = XmlReader.Create(xmlFilePath, settings);
         XmlDocument doc = new XmlDocument();
-        doc.Load(xmlFilePath);
+        doc.Load(reader);
         //节点列表
         XmlNodeList nodeList = doc.SelectNodes(rootNodeName);
         if (nodeList == null) return null;

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <awakens>
+	<!-- 这里是注释 -->
+	<!-- 这里是注释 -->
+	<!-- 这里是注释 -->
 	<awaken awakenNo="1" price="7999" probability="0.25" dropNo="70300001" name = "啥阿瑟"/>
 	<awaken awakenNo="2" price="9999" probability="0.25" dropNo="70300002" name = "as"/>
 	<awaken awakenNo="3" price="19999" probability="0.2" dropNo="70300003" name = "as"/>
