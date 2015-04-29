@@ -22,6 +22,7 @@ class XMLUtil
     public static List<T>parse<T>(String xmlFilePath, String rootNodeName)
     {
         XmlReaderSettings settings = new XmlReaderSettings();
+        //忽略注释
         settings.IgnoreComments = true;
         XmlReader reader = XmlReader.Create(xmlFilePath, settings);
         XmlDocument doc = new XmlDocument();
@@ -68,6 +69,7 @@ class XMLUtil
     public static Dictionary<String, T> parse<T>(String xmlFilePath, String rootNodeName, String fieldname)
     {
         XmlReaderSettings settings = new XmlReaderSettings();
+        //忽略注释
         settings.IgnoreComments = true;
         XmlReader reader = XmlReader.Create(xmlFilePath, settings);
         XmlDocument doc = new XmlDocument();
