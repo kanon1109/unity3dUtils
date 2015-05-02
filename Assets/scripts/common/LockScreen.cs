@@ -8,6 +8,11 @@ public class LockScreen
     private static GameObject panel = null;
     //默认的画布
     private static GameObject canvas = GameObject.Find("Canvas");
+    /// <summary>
+    /// 设置父节点
+    /// </summary>
+    /// <param name=canvasName></param>
+    /// <returns></returns>
     public static void initParent(String canvasName)
     {
         canvas = GameObject.Find(canvasName);
