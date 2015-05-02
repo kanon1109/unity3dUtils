@@ -56,6 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\common\LockScreen.cs" />
+    <Compile Include="Assets\scripts\test\CommonTest.cs" />
     <Compile Include="Assets\scripts\test\KeyboardManagerTest.cs" />
     <Compile Include="Assets\scripts\test\MathUtilTest.cs" />
     <Compile Include="Assets\scripts\test\StringUtilTest.cs" />
@@ -70,5 +72,5 @@
   <ItemGroup>
     <None Include="Assets\xml\awakens.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
