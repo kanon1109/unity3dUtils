@@ -21,6 +21,16 @@ class Language
     /// 初始化语言表配置
     /// </summary>
     /// <param name=xmlFilePath>xml路径+名字</param>
+    /// <returns></returns>
+    public static void init(String xmlFilePath)
+    {
+        init(xmlFilePath, "language");
+    }
+
+    /// <summary>
+    /// 初始化语言表配置
+    /// </summary>
+    /// <param name=xmlFilePath>xml路径+名字</param>
     /// <param name=rootNodeName>根节点名字</param>
     /// <returns></returns>
     public static void init(String xmlFilePath, String rootNodeName)
