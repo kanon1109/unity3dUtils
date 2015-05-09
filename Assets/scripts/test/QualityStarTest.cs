@@ -5,10 +5,14 @@ public class QualityStarTest : MonoBehaviour
 {
 
 	// Use this for initialization
+    public GameObject ui;
 	void Start ()
     {
-        QualityStar.create("star", 3, 1);
-        QualityStar.create("star", 1, 1);
+        GameObject go = QualityStar.create(ui.transform, "star", 5);
+
+        go.transform.localPosition = new Vector3(100, -100);
+
+        go = QualityStar.create(ui.transform, "star", 3);
 	}
 	
 	// Update is called once per frame
