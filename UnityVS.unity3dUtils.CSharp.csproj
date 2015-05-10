@@ -56,8 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\common\Alert.cs" />
     <Compile Include="Assets\scripts\common\LockScreen.cs" />
     <Compile Include="Assets\scripts\common\QualityStar.cs" />
+    <Compile Include="Assets\scripts\test\AlertTest.cs" />
     <Compile Include="Assets\scripts\test\CommonTest.cs" />
     <Compile Include="Assets\scripts\test\IllegalWordTest.cs" />
     <Compile Include="Assets\scripts\test\KeyboardManagerTest.cs" />

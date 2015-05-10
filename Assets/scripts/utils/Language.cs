@@ -70,6 +70,7 @@ class Language
     public static String getValue(String key)
     {
         if (dict == null) return null;
+        if (!dict.ContainsKey(key)) return key + "@error";
         return dict[key];
     }
 
@@ -84,6 +85,7 @@ class Language
     public static String getValue(String key, params System.Object[] obj)
     {
         if (dict == null) return null;
+        if (!dict.ContainsKey(key)) return key + "@error";
         String str = dict[key];
         return String.Format(str, obj);
     }
