@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class CommonTest : MonoBehaviour
 {
     public Button btn;
+    public Canvas ui;
     private GameObject button;
 	// Use this for initialization
 	void Start ()
     {
-        LockScreen.initParent("ui");
+        LockScreen.initParent(ui.transform);
         btn.onClick.AddListener(clickHandler);
 	}
 	

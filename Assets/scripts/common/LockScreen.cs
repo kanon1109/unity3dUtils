@@ -7,15 +7,15 @@ public class LockScreen
 {
     private static GameObject panel = null;
     //默认的画布
-    private static GameObject canvas = GameObject.Find("Canvas");
+    private static Transform parent = null;
     /// <summary>
     /// 设置父节点
     /// </summary>
     /// <param name=canvasName></param>
     /// <returns></returns>
-    public static void initParent(String canvasName)
+    public static void initParent(Transform parent)
     {
-        canvas = GameObject.Find(canvasName);
+        LockScreen.parent = parent;
     }
 
     /// <summary>
@@ -24,7 +24,7 @@ public class LockScreen
     /// <returns></returns>
     public static void show()
     {
-        LockScreen.show(-1);
+        LockScreen.show(.3f);
     }
 
     /// <summary>
@@ -36,17 +36,18 @@ public class LockScreen
     {
         if (panel == null)
         {
-            panel = Resources.Load("prefabs/lockScreen") as GameObject;
-            panel = MonoBehaviour.Instantiate(panel, new Vector3(), new Quaternion()) as GameObject;
+            panel = new GameObject();
+            panel.name = "lockScreen";
+            Image image = panel.AddComponent<Image>();
+            image.sprite = Resources.Load("lockScreenBg", typeof(Sprite)) as Sprite;
             //将锁屏添加进画布中
-            panel.transform.SetParent(canvas.transform);
-            //设置rectTransfrom的 left right 和 bottom top
-            panel.GetComponent<RectTransform>().offsetMin = new Vector2(0.0f, 0.0f);
-            panel.GetComponent<RectTransform>().offsetMax = new Vector2(0.0f, 0.0f);
+            panel.transform.SetParent(parent);
+            panel.transform.localPosition = new Vector3();
+            panel.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
         }
         panel.SetActive(true);
         //设置深度节点
-        panel.transform.SetSiblingIndex(canvas.transform.GetSiblingIndex());
+        panel.transform.SetSiblingIndex(-1);
         //设置透明度
         if (alpha >= 0)
         {

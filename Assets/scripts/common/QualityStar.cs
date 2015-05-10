@@ -25,11 +25,11 @@ public class QualityStar
             image.sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             //设置成原始大小
             image.SetNativeSize();
-            star.transform.parent = qs.transform;
+            star.transform.SetParent(qs.transform);
             //image.sprite.rect.width 获取图片原始宽度
             star.transform.position = new Vector3((image.sprite.rect.width + gap) * i, 0);
         }
-        qs.transform.parent = parent;
+        qs.transform.SetParent(parent);
         qs.transform.localPosition = new Vector3();
         //设置本地的坐标
         return qs;
