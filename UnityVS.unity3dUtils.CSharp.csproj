@@ -66,6 +66,7 @@
     <Compile Include="Assets\scripts\test\LanguageTest.cs" />
     <Compile Include="Assets\scripts\test\MathUtilTest.cs" />
     <Compile Include="Assets\scripts\test\QualityStarTest.cs" />
+    <Compile Include="Assets\scripts\test\RandomNameTest.cs" />
     <Compile Include="Assets\scripts\test\SoundManagerTest.cs" />
     <Compile Include="Assets\scripts\test\StringUtilTest.cs" />
     <Compile Include="Assets\scripts\test\TimeFormatTest.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\scripts\utils\KeyboardManager.cs" />
     <Compile Include="Assets\scripts\utils\Language.cs" />
     <Compile Include="Assets\scripts\utils\MathUtil.cs" />
+    <Compile Include="Assets\scripts\utils\RandomName.cs" />
     <Compile Include="Assets\scripts\utils\SoundManager.cs" />
     <Compile Include="Assets\scripts\utils\StringUtil.cs" />
     <Compile Include="Assets\scripts\utils\TimeFormat.cs" />
@@ -85,6 +87,7 @@
     <None Include="Assets\xml\awakens.xml" />
     <None Include="Assets\xml\illegalWords.xml" />
     <None Include="Assets\xml\language.xml" />
+    <None Include="Assets\xml\names.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

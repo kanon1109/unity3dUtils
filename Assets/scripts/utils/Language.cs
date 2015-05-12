@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Xml;
 using System.Collections.Generic;
-using UnityEngine;
 //语言表 用于项目多语言
 //xml格式如下：
 /*<language>
