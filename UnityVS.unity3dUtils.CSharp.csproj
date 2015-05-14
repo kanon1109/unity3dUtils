@@ -71,6 +71,7 @@
     <Compile Include="Assets\scripts\test\StringUtilTest.cs" />
     <Compile Include="Assets\scripts\test\TimeFormatTest.cs" />
     <Compile Include="Assets\scripts\test\TimerTest.cs" />
+    <Compile Include="Assets\scripts\test\WebManagerTest.cs" />
     <Compile Include="Assets\scripts\test\XMLUtilTest.cs" />
     <Compile Include="Assets\scripts\utils\IllegalWord.cs" />
     <Compile Include="Assets\scripts\utils\KeyboardManager.cs" />
@@ -81,9 +82,11 @@
     <Compile Include="Assets\scripts\utils\StringUtil.cs" />
     <Compile Include="Assets\scripts\utils\TimeFormat.cs" />
     <Compile Include="Assets\scripts\utils\Timer.cs" />
+    <Compile Include="Assets\scripts\utils\WebManager.cs" />
     <Compile Include="Assets\scripts\utils\XMLUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\resources\test.txt" />
     <None Include="Assets\xml\awakens.xml" />
     <None Include="Assets\xml\illegalWords.xml" />
     <None Include="Assets\xml\language.xml" />
