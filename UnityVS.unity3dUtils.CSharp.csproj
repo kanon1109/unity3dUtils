@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.1f1</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -25,7 +25,7 @@
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,7 +34,7 @@
     <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -62,9 +62,71 @@
     <Compile Include="Assets\scripts\common\Alert.cs" />
     <Compile Include="Assets\scripts\common\LockScreen.cs" />
     <Compile Include="Assets\scripts\common\QualityStar.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipBaseException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\BZip2\BZip2.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\BZip2\BZip2Constants.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\BZip2\BZip2Exception.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\BZip2\BZip2InputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\BZip2\BZip2OutputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Checksums\Adler32.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Checksums\CRC32.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Checksums\IChecksum.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Checksums\StrangeCRC.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\FileSystemScanner.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\INameTransform.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\IScanFilter.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\NameFilter.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\PathFilter.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\StreamUtils.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Core\WindowsPathUtils.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Encryption\PkzipClassic.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Encryption\ZipAESStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Encryption\ZipAESTransform.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\GZip\GZIPConstants.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\GZip\GZipException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\GZip\GzipInputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\GZip\GzipOutputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Lzw\LzwConstants.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Lzw\LzwException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Lzw\LzwInputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\InvalidHeaderException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarArchive.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarBuffer.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarEntry.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarHeader.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarInputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Tar\TarOutputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Deflater.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\DeflaterConstants.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\DeflaterEngine.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\DeflaterHuffman.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\DeflaterPending.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Inflater.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\InflaterDynHeader.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\InflaterHuffmanTree.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\PendingBuffer.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Streams\DeflaterOutputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Streams\InflaterInputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Streams\OutputWindow.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\Compression\Streams\StreamManipulator.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\FastZip.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\IEntryFactory.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\WindowsNameTransform.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipConstants.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipEntry.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipEntryFactory.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipException.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipExtraData.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipFile.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipHelperStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipInputStream.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipNameTransform.cs" />
+    <Compile Include="Assets\scripts\libs\SharpZipLib\Zip\ZipOutputStream.cs" />
     <Compile Include="Assets\scripts\test\AlertTest.cs" />
     <Compile Include="Assets\scripts\test\CommonTest.cs" />
     <Compile Include="Assets\scripts\test\DeviceUtilsTest.cs" />
+    <Compile Include="Assets\scripts\test\FileManagerTest.cs" />
     <Compile Include="Assets\scripts\test\IllegalWordTest.cs" />
     <Compile Include="Assets\scripts\test\KeyboardManagerTest.cs" />
     <Compile Include="Assets\scripts\test\LanguageTest.cs" />
@@ -78,6 +140,7 @@
     <Compile Include="Assets\scripts\test\WebManagerTest.cs" />
     <Compile Include="Assets\scripts\test\XMLUtilTest.cs" />
     <Compile Include="Assets\scripts\utils\DeviceUtils.cs" />
+    <Compile Include="Assets\scripts\utils\FileManager.cs" />
     <Compile Include="Assets\scripts\utils\IllegalWord.cs" />
     <Compile Include="Assets\scripts\utils\KeyboardManager.cs" />
     <Compile Include="Assets\scripts\utils\Language.cs" />
@@ -91,6 +154,10 @@
     <Compile Include="Assets\scripts\utils\XMLUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\awakens.xml" />
+    <None Include="Assets\Resources\illegalWords.xml" />
+    <None Include="Assets\Resources\language.xml" />
+    <None Include="Assets\Resources\names.xml" />
     <None Include="Assets\xml\awakens.xml" />
     <None Include="Assets\xml\illegalWords.xml" />
     <None Include="Assets\xml\language.xml" />

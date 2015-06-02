@@ -4,9 +4,6 @@ E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
 E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEditor.dll
 E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.dll
 E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
-E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.xml
-E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEditor.xml
-E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
 E:\workspace\u3dProject\unity3dUtils\obj\Debug\Assembly-CSharp.dll
 E:\workspace\u3dProject\unity3dUtils\obj\Debug\Assembly-CSharp.pdb
 E:\workspace\kanon\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
@@ -20,3 +17,8 @@ E:\workspace\kanon\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.UI
 E:\workspace\kanon\u3dProject\unity3dUtils\obj\Debug\UnityVS.unity3dUtils.CSharp.csprojResolveAssemblyReference.cache
 E:\workspace\kanon\u3dProject\unity3dUtils\obj\Debug\Assembly-CSharp.dll
 E:\workspace\kanon\u3dProject\unity3dUtils\obj\Debug\Assembly-CSharp.pdb
+E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.xml
+E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEditor.xml
+E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+E:\workspace\u3dProject\unity3dUtils\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml

@@ -6,7 +6,7 @@ public class LanguageTest : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        Language.init("Assets/xml/language.xml", "language");
+        Language.init(Application.persistentDataPath + "/cfg/language.xml", "language");
         print(Language.getValue("test"));
         print(Language.getValue("test", "kanon", "tb"));
 	}

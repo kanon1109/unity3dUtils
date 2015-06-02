@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Xml;
+using UnityEngine;
 /*<awakens>
 	<awaken awakenNo="1" price="7999" probability="0.25" dropNo="70300001"/>
 	<awaken awakenNo="2" price="9999" probability="0.25" dropNo="70300002"/>
@@ -16,10 +18,10 @@ class XMLUtil
     /// <summary>
     /// 解析xml配置并放入list中
     /// </summary>
-    /// <param name="xmlFilePath">包含路径的文件名称</param>
+    /// <param name="xmlFilePath">文件路径 + 名称</param>
     /// <param name="rootNodeName">根节点名字</param>
     /// <returns>序列化后的存放数据的List</returns>
-    public static List<T>parse<T>(String xmlFilePath, String rootNodeName)
+    public static List<T> parse<T>(String xmlFilePath, String rootNodeName)
     {
         XmlReaderSettings settings = new XmlReaderSettings();
         //忽略注释
@@ -62,7 +64,7 @@ class XMLUtil
     /// <summary>
     /// 解析xml配置并放入Dictionary中
     /// </summary>
-    /// <param name="xmlFilePath">包含路径的文件名称</param>
+    /// <param name="xmlFilePath">文件路径 + 文件名称</param>
     /// <param name="rootNodeName">根节点名字</param>
     /// <param name="fieldname">做完key保存使用的字段名</param>
     /// <returns序列化后的存放数据的Dictionary></returns>
