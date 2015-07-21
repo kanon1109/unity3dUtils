@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 //下载返回值类型
 public enum DownloadType
 {
@@ -33,6 +33,7 @@ public class WebManager : MonoBehaviour
     private bool m_bIsBeginRequest = false;                             //是否开始请求了
     private bool m_bIsDone = true;                                      //是否请求结束了
 
+    public GameObject infoTxt;
     public static WebManager Instance
     {
         get { return instance; }
@@ -64,25 +65,24 @@ public class WebManager : MonoBehaviour
             {
                 if (m_www.error != null)
                 {
-                    print(m_www.error);
+                    Debug.Log(m_www.error);
                 }
                 else
                 {
                     if (m_delegate != null)
                     {
-                        //二进制
                         if (m_downloadType == DownloadType.type_bytes)
                         {
+                            //二进制
                             m_delegate.Invoke(m_www.bytes);
                         }
-                        //文本
                         else if (m_downloadType == DownloadType.type_txt)
                         {
+                            //文本
                             m_delegate.Invoke(m_www.text);
                         }
                     }
                 }
-
                 m_bIsDone = true;
                 m_bIsBeginRequest = false;
                 m_delegate = null;
@@ -123,7 +123,6 @@ public class WebManager : MonoBehaviour
         downloadItem.downloadType = downloadType;
         downloadItem.url = url;
         downloadItem.callBack = callBack;
-
         downloadList.Add(downloadItem);
     }
 }

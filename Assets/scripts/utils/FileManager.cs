@@ -5,18 +5,14 @@ using UnityEngine;
 //用于下载文件 并且保存至 Resources目录下，再由XMLUtil读取配置并序列化。
 public class FileManager
 {
-    //下载完成回调
-    public delegate void HandlerDelegate(object data);
     //下载保存路径
     public static readonly string pathURL = 
 #if UNITY_ANDROID                                   //安卓  
-        "jar:file://" + Application.persistentDataPath + "/";
+        Application.persistentDataPath + "//";
 #elif UNITY_IPHONE                                  //iPhone
-        Application.persistentDataPath + "/";
-#elif UNITY_STANDALONE_WIN || UNITY_EDITOR          //windows平台和web平台
-        Application.persistentDataPath + "/";
-#else  
-        string.Empty;  
+        Application.persistentDataPath + "//";
+#else
+        "";
 #endif
 
     /// <summary>
@@ -50,8 +46,6 @@ public class FileManager
     public static void saveByte(String fileName, object data)
     {
         String filePath = pathURL + fileName;
-        //删除已有文件
-        deleteFile(filePath);
         //创建文件
         createByteFile(filePath, data as byte[]);
     }
@@ -66,6 +60,8 @@ public class FileManager
     {
         //文件流信息  
         FileInfo fi = new FileInfo(filePath);
+        MonoBehaviour.print(fi.DirectoryName);
+        if (fi.Exists) fi.Delete();
         Stream sw = fi.Create();
         sw.Write(data, 0, data.Length);
         //关闭流  
@@ -83,8 +79,6 @@ public class FileManager
     public static void saveTxt(String fileName, object data)
     {
         String filePath = pathURL + fileName;
-        //删除已有文件
-        deleteFile(filePath);
         //创建文件
         createTxtFile(filePath, data.ToString());
     }
@@ -100,6 +94,7 @@ public class FileManager
         //文件流信息
         StreamWriter sw;
         FileInfo t = new FileInfo(filePath);
+        if (t.Exists) t.Delete();
         sw = t.CreateText();
         //以行的形式写入信息
         sw.WriteLine(data);
@@ -108,7 +103,6 @@ public class FileManager
         //销毁流
         sw.Dispose();
     }
-
 
     /// <summary>
     /// 用第三方工具去解压 zip ,保存到本地
@@ -128,12 +122,12 @@ public class FileManager
 
                 //有文件夹路径，创建文件夹
                 if (directoryName.Length > 0)
-                    Directory.CreateDirectory(pathURL + "/" + directoryName);
+                    Directory.CreateDirectory(pathURL + directoryName);
 
                 if (fileName != string.Empty)
                 {
                     //读取文件数据，保存文件
-                    using (FileStream streamWriter = File.Create(pathURL + "/" + theEntry.Name))
+                    using (FileStream streamWriter = File.Create(pathURL + theEntry.Name))
                     {
                         int size = 2048;
                         byte[] data = new byte[2048];
