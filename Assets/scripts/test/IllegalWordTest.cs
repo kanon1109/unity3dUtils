@@ -5,7 +5,7 @@ class IllegalWordTest : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        IllegalWord.init(Application.persistentDataPath + "/cfg/illegalWords.xml", "illegalWords");
+        IllegalWord.init("illegalWords");
 
         print(IllegalWord.filter("阿靠他祖宗斯达 阿斯达援助交际fuck靠他祖宗asdfuck"));
 

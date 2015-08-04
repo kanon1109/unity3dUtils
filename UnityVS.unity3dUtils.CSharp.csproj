@@ -155,12 +155,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\awakens.xml" />
+    <None Include="Assets\Resources\cfg\illegalWords.xml" />
     <None Include="Assets\Resources\cfg\language.xml" />
     <None Include="Assets\Resources\illegalWords.xml" />
     <None Include="Assets\Resources\names.xml" />
     <None Include="Assets\StreamingAssets\language.xml" />
     <None Include="Assets\xml\awakens.xml" />
-    <None Include="Assets\xml\illegalWords.xml" />
     <None Include="Assets\xml\language.xml" />
     <None Include="Assets\xml\names.xml" />
   </ItemGroup>

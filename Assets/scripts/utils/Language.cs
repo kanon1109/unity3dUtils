@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Xml;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using System.Xml.Linq;
-using System.Collections;
 //语言表 用于项目多语言
 //xml格式如下：
 /*<language>
@@ -32,7 +29,6 @@ class Language
         if (dict == null)
         {
             TextAsset t = Resources.Load("cfg/" + xmlFileName) as TextAsset;
-            MonoBehaviour.print(t);
             dict = new Dictionary<String, String>();
             var xe = XElement.Parse(t.text);
             var es = xe.Elements();
