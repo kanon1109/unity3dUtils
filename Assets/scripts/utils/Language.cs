@@ -3,6 +3,8 @@ using System.Xml;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Xml.Linq;
+using System.Collections;
 //语言表 用于项目多语言
 //xml格式如下：
 /*<language>
@@ -18,47 +20,25 @@ using System.IO;
 class Language
 {
     private static Dictionary<String, String> dict = null;
-    /// <summary>
-    /// 初始化语言表配置
-    /// </summary>
-    /// <param name=xmlFileName>名字</param>
-    /// <returns></returns>
-    public static void init(String xmlFileName)
-    {
-        init(xmlFileName, "language");
-    }
 
     /// <summary>
     /// 初始化语言表配置
     /// </summary>
-    /// <param name=xmlFilePath>文件路径 + 名称</param>
+    /// <param name=xmlFilePath>文件名称</param>
     /// <param name=rootNodeName>根节点名字</param>
     /// <returns></returns>
-    public static void init(String xmlFilePath, String rootNodeName)
+    public static void init(String xmlFileName)
     {
         if (dict == null)
         {
+            TextAsset t = Resources.Load("cfg/" + xmlFileName) as TextAsset;
+            MonoBehaviour.print(t);
             dict = new Dictionary<String, String>();
-            XmlReaderSettings settings = new XmlReaderSettings();
-            //忽略注释
-            settings.IgnoreComments = true;
-            XmlReader reader = XmlReader.Create(xmlFilePath, settings);
-            XmlDocument doc = new XmlDocument();
-            doc.Load(reader);
-            //节点列表
-            XmlNodeList nodeList = doc.SelectNodes(rootNodeName);
-            if (nodeList == null) return;
-            XmlNodeList childNodeList = nodeList.Item(0).ChildNodes;
-            //遍历整个xml
-            foreach (XmlNode node in childNodeList)
+            var xe = XElement.Parse(t.text);
+            var es = xe.Elements();
+            foreach (var v in es)
             {
-                //MonoBehaviour.print(node.Name);
-                //MonoBehaviour.print(node.ChildNodes.Item(0).Value);
-                //存入字典
-                if (!dict.ContainsKey(node.Name))
-                    dict.Add(node.Name, node.ChildNodes.Item(0).Value);
-                else
-                    dict[node.Name] = node.ChildNodes.Item(0).Value;
+                dict[v.Name.LocalName] = v.Value;
             }
         }
     }
