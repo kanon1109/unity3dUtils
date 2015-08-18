@@ -8,7 +8,7 @@ public class TimerTest : MonoBehaviour
 	void Start ()
     {
         timer = this.gameObject.AddComponent<Timer>();
-        timer.createTimer(.3f, 2, timerComplete);
+        timer.createTimer(.3f, -1, timerComplete);
         //timer.createTimer(.3f, 2, timerComplete, true);
         timer.start();
 	}
@@ -16,11 +16,11 @@ public class TimerTest : MonoBehaviour
     void timerComplete()
     {
         print("timer.currentCount " + timer.currentCount);
-        if (timer.currentCount == 2)
+        /*if (timer.currentCount == 2)
         {
             timer.reset();
             timer.start();
-        }
+        }*/
     }
 
 	// Update is called once per frame
