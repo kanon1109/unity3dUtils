@@ -33,7 +33,6 @@ public class WebManager : MonoBehaviour
     private bool m_bIsBeginRequest = false;                             //是否开始请求了
     private bool m_bIsDone = true;                                      //是否请求结束了
 
-    public GameObject infoTxt;
     public static WebManager Instance
     {
         get { return instance; }

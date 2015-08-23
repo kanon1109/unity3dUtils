@@ -1,4 +1,4 @@
 5.0.1f1:1.9.9.0
-StandaloneWindows
+Android
 D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 D:\Program Files\Unity\Editor\Data\PlaybackEngines\iossupport\UnityEditor.iOS.Extensions.Xcode.dll

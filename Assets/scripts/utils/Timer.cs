@@ -72,7 +72,7 @@ class Timer : MonoBehaviour
         this._curCount = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!this._isRunning) return;
         this.curTime += Time.deltaTime;

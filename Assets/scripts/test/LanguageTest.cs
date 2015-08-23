@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class LanguageTest : MonoBehaviour 
 {
 	// Use this for initialization
+	public Text infoTxt;
 	void Start () 
     {
-        Language.init(Application.persistentDataPath + "/cfg/language.xml", "language");
-        print(Language.getValue("test"));
-        print(Language.getValue("test", "kanon", "tb"));
+        Language.init("language");
+        infoTxt.text += Language.getValue("test");
+        infoTxt.text += Language.getValue("test", "kanon", "tb");
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
     {

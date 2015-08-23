@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
+using System.Xml.Linq;
 using UnityEngine;
 class IllegalWord
 {
@@ -11,28 +10,20 @@ class IllegalWord
     /// <summary>
     /// 初始化语言表配置
     /// </summary>
-    /// <param name=xmlFilePath>文件路径 + 名称</param>
+    /// <param name=xmlFileName>文件名称</param>
     /// <param name=rootNodeName>根节点名字</param>
     /// <returns></returns>
-    public static void init(String xmlFilePath, String rootNodeName)
+    public static void init(String xmlFileName)
     {
         if (list == null)
         {
+            TextAsset t = Resources.Load("cfg/" + xmlFileName) as TextAsset;
             list = new List<String>();
-            XmlReaderSettings settings = new XmlReaderSettings();
-            //忽略注释
-            settings.IgnoreComments = true;
-            XmlReader reader = XmlReader.Create(xmlFilePath, settings);
-            XmlDocument doc = new XmlDocument();
-            doc.Load(reader);
-            //节点列表
-            XmlNodeList nodeList = doc.SelectNodes(rootNodeName);
-            if (nodeList == null) return;
-            XmlNodeList childNodeList = nodeList.Item(0).ChildNodes;
-            //遍历整个xml
-            foreach (XmlNode node in childNodeList)
+            var xe = XElement.Parse(t.text);
+            var es = xe.Elements();
+            foreach (var v in es)
             {
-                list.Add(node.Attributes.Item(0).Value);
+                list.Add(v.Attribute("name").Value);
             }
         }
     }
