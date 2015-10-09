@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 class SoundManager
 {
+    struct SoundItem
+    {
+        public GameObject soundGo;
+        //音效播放完毕回调
+        public SoundCompleteHandler soundCompleteHandler;
+    }
+
     //bgm只有一个
     public static GameObject bgm = null;
     //背景音乐开关
@@ -9,6 +17,9 @@ class SoundManager
     //音效开关
     public static bool soundSwitch = true;
 
+    public delegate void SoundCompleteHandler();
+    //音效列表
+    private static List<SoundItem> audioList = new List<SoundItem>();
     /// <summary>
     /// 播放背景音乐
     /// </summary>
@@ -30,7 +41,7 @@ class SoundManager
             audio.clip = clip;
             audio.loop = loop;
             audio.volume = volume;
-            audio.name = "bgm" + name;
+            audio.name = name;
             audio.Play();
             if (!loop) GameObject.Destroy(bgm, clip.length);
         }
@@ -80,22 +91,27 @@ class SoundManager
     /// <param name="loop">是否循环如果为true则不销毁</param>
     /// <param name="volume">音量</param>
     /// <returns></returns>
-    public static void playEffect(String name, bool loop, float volume)
+    public static void playEffect(String name,
+                                 bool loop,
+                                 float volume,
+                                 SoundCompleteHandler handler = null)
     {
         initSwitch();
-        if(!soundSwitch) return;
+        if (!soundSwitch) return;
         //加载AudioClip资源
-        AudioClip clip = (AudioClip) Resources.Load(name, typeof(AudioClip));
+        AudioClip clip = (AudioClip)Resources.Load(name, typeof(AudioClip));
         if (clip != null)
         {
-            GameObject effectSound = new GameObject();
-            AudioSource audio = effectSound.AddComponent<AudioSource>();
+            SoundItem effectSound = new SoundItem();
+            effectSound.soundCompleteHandler = handler;
+            effectSound.soundGo = new GameObject();
+            AudioSource audio = effectSound.soundGo.AddComponent<AudioSource>();
             audio.clip = clip;
             audio.loop = loop;
             audio.volume = volume;
-            audio.name = "soundEffect" + name;
+            audio.name = name;
             audio.Play();
-            if (!loop) GameObject.Destroy(effectSound, clip.length);
+            audioList.Add(effectSound);
         }
     }
 
@@ -149,5 +165,27 @@ class SoundManager
         value = PlayerPrefs.GetString("soundSwitch");
         if (value == "" || value == "on") soundSwitch = true;
         else soundSwitch = false;
+    }
+
+    /// <summary>
+    /// 每帧更新
+    /// </summary>
+    /// <returns></returns>
+    public static void update()
+    {
+        if (audioList == null) return;
+        int count = audioList.Count;
+        for (int i = count - 1; i >= 0; --i)
+        {
+            SoundItem item = audioList[i];
+            AudioSource audio = item.soundGo.GetComponent<AudioSource>();
+            if (!audio.loop && !audio.isPlaying)
+            {
+                if (item.soundCompleteHandler != null)
+                    item.soundCompleteHandler.Invoke();
+                audioList.RemoveAt(i);
+                GameObject.Destroy(item.soundGo);
+            }
+        }
     }
 }

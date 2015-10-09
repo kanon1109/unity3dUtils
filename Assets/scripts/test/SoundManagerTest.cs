@@ -15,7 +15,7 @@ public class SoundManagerTest : MonoBehaviour
 	void Start ()
     {
         print(PlayerPrefs.GetString("musicSwitch"));
-        SoundManager.playBackgroundMusic("click", true, .2f);
+        SoundManager.playBackgroundMusic("click", true);
         musicSwitchBtn.onClick.AddListener(musicSwitchBtnClickHandler);
         soundSwitchBtn.onClick.AddListener(soundSwitchBtnClickHandler);
         clearBtn.onClick.AddListener(clearBtnClickHandler);
@@ -39,13 +39,13 @@ public class SoundManagerTest : MonoBehaviour
 
     void clickHandler()
     {
-        SoundManager.playBackgroundMusic("2", true, .2f);
-        SoundManager.playEffect("click", false, .2f);
+        //SoundManager.playBackgroundMusic("2", true, .2f);
+        SoundManager.playEffect("click", false, 1);
     }
 	
 	// Update is called once per frame
 	void Update () 
     {
-	
+        SoundManager.update();
 	}
 }
