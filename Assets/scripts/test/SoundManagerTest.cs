@@ -34,13 +34,14 @@ public class SoundManagerTest : MonoBehaviour
 
     private void musicSwitchBtnClickHandler()
     {
+        SoundManager.stopAllEffectSound();
         SoundManager.setMusicSwitch(false);
     }
 
     void clickHandler()
     {
         //SoundManager.playBackgroundMusic("2", true, .2f);
-        SoundManager.playEffect("click", false, 1);
+        SoundManager.playEffect("click", true, 1);
     }
 	
 	// Update is called once per frame

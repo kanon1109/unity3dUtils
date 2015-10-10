@@ -188,4 +188,27 @@ class SoundManager
             }
         }
     }
+
+    /// <summary>
+    /// 暂停所有音效
+    /// </summary>
+    /// <returns></returns>
+    public static void stopAllEffectSound(bool callBack = false)
+    {
+        if (audioList == null) return;
+        int count = audioList.Count;
+        for (int i = count - 1; i >= 0; --i)
+        {
+            SoundItem item = audioList[i];
+            AudioSource audio = item.soundGo.GetComponent<AudioSource>();
+            if (audio.isPlaying)
+            {
+                if (callBack && item.soundCompleteHandler != null)
+                    item.soundCompleteHandler.Invoke();
+                audio.Stop();
+                audioList.RemoveAt(i);
+                GameObject.Destroy(item.soundGo);
+            }
+        }
+    }
 }
