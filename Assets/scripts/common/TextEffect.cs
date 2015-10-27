@@ -54,7 +54,7 @@ public class TextEffect:MonoBehaviour
     {
         this.txt.text += this.strAry[this.index];
         this.index++;
-        if (this.index >= this.strAry.Length - 1)
+        if (this.index > this.strAry.Length - 1)
         {
             this.timer.stop();
             this.isComplete = true;
