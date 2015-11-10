@@ -17,7 +17,7 @@ class Timer : MonoBehaviour
     /// <summary>
     /// 创建计时器
     /// </summary>
-    /// <param name=delay>运行间隔</param>
+    /// <param name=delay>运行间隔秒数</param>
     /// <param name=repeatCount>重复次数</param>
     /// <param name=handler>回调函数</param>
     /// <param name=autoDestroy>是否自动销毁</param>
@@ -35,7 +35,7 @@ class Timer : MonoBehaviour
     /// <summary>
     /// 创建计时器
     /// </summary>
-    /// <param name=delay>运行间隔</param>
+    /// <param name=delay>运行间隔秒数</param>
     /// <param name=repeatCount>重复次数</param>
     /// <param name=handler>回调函数</param>
     /// <returns></returns>

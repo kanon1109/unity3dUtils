@@ -96,6 +96,36 @@ public class RandomUtil
     }
 
     /// <summary>
+    ///  对列表中的元素进行随机采样
+    ///  Random.sample([1, 2, 3, 4, 5],  3)  // Choose 3 elements
+    ///  [4, 1, 5]
+    /// </summary>
+    /// <param name="list">需要采样的列表</param>
+    /// <param name="num">采样数量</param>
+    /// <param name="ignoreList">忽略列表</param>
+    /// <returns></returns>
+    public static List<T> sample<T>(List<T> list, uint num, List<T> ignoreList)
+    {
+        int len = list.Count;
+        if (num <= 0 || len < num)
+            throw new System.Exception("采样数量不够");
+        //最终输出的list
+        List<T> selected = new List<T>();
+        //存放已经放入元素的索引的list
+        List<int> indices = new List<int>();
+        for (int i = 0; i < num; ++i)
+        {
+            int index = Random.Range(0, len);
+            while (indices.IndexOf(index) >= 0 || (ignoreList != null &&
+                                                   ignoreList.IndexOf(list[index]) >= 0))
+                index = Random.Range(0, len);
+            selected.Add(list[index]);
+            indices.Add(index);
+        }
+        return selected;
+    }
+
+    /// <summary>
     /// 返回 a - b之间的随机数，不包括  Math.max(a, b)
     /// </summary>
     /// <param name="a"></param>

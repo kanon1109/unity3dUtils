@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
   
 public class FPS : MonoBehaviour
@@ -8,21 +7,25 @@ public class FPS : MonoBehaviour
     private double lastInterval;
     private int frames = 0;
     private float fps;
-
 	private Text tf;
-    void Start()
+
+    /// <summary>
+    /// ≥ı ºªØ
+    /// </summary>
+    /// <param name="pos">Œª÷√</param>
+    /// <returns></returns>
+    public void init(Vector2 pos)
     {
         lastInterval = Time.realtimeSinceStartup;
         frames = 0;
-		tf = gameObject.GetComponent<Text>();
-		tf.transform.localPosition = new Vector2(-Layer.Instance.getRootRect().x / 2, -Layer.Instance.getRootRect().y / 2);
+        tf = gameObject.GetComponent<Text>();
+        tf.transform.localPosition = pos;
     }
+
     void Update()
     {
 		if(tf == null)
-		{
 			return;
-		}
         ++frames;
         float timeNow = Time.realtimeSinceStartup;
         if (timeNow > lastInterval + updateInterval)
