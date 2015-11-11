@@ -3,13 +3,13 @@ public class DelayTest:MonoBehaviour
 {
     void Start()
     {
-        Delay.create(this.gameObject);
-        Delay.setDelay(1000, delayCompleteHandler);
+        Delay.setDelay(this.gameObject, 1000, delayCompleteHandler, true, "test");
     }
 
-    private void delayCompleteHandler()
+    private void delayCompleteHandler(System.Object param)
     {
+        print(param);
         print("delayCompleteHandler");
-        Delay.setDelay(1000, delayCompleteHandler);
+        Delay.setDelay(this.gameObject, 2000, delayCompleteHandler, false);
     }
 }
