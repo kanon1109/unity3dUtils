@@ -74,4 +74,23 @@ public class Debugger
             Debug.Log(msg);
         }
     }
+
+    /// <summary>
+    /// 打印多个对象
+    /// </summary>
+    /// <param name="args">对象参数</param>
+    public static void log(params object[] args)
+    {
+        if (Debug.isDebugBuild && showLog)
+        {
+            int length = args.Length;
+            string str = string.Empty;
+            for (int i = 0; i < length; ++i)
+            {
+                str += args[i];
+                if (i < length - 1) str += ", ";
+            }
+            Debug.Log(str);
+        }
+    }
 }
