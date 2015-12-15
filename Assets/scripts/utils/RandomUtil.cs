@@ -33,7 +33,7 @@ public class RandomUtil
     /// <returns>[a, b] 直接的随机整数</returns>
     public static int randint(int a, int b)
     {
-        return Random.Range(a, b);
+        return Random.Range(a, b + 1);
     }
 
     /// <summary>
