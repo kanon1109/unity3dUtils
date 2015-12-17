@@ -13,7 +13,8 @@ public class UiUtil : MonoBehaviour
         Material m = null;
         if ( !bl ) m = Resources.Load("Material/UIGray") as Material;
         btn.GetComponent<Image>().material = m;
-        btn.GetComponentInChildren<Text>().material = m;
+		if (btn.GetComponentInChildren<Text>() != null)
+			btn.GetComponentInChildren<Text>().color = new Color(144f / 255f, 144f / 255f, 144f / 255f);
         return bl;
     }
 
