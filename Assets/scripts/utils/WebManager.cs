@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System.Text;
+using UnityEngine;
 //下载返回值类型
 public enum DownloadType
 {
     type_bytes,         //2进制压缩包
-    type_txt            //文本
+    type_txt,           //文本
+    type_url            //http请求
 }
 
 public class WebManager : MonoBehaviour 
@@ -18,20 +18,22 @@ public class WebManager : MonoBehaviour
         public DownloadType         downloadType;
         public String               url;
         public HandlerDelegate      callBack;
+        public byte[]               requestParams;
+        
     }
 
     private static WebManager instance = null;
 
-    private WWW m_www;                                                  //Http组件
+    private WWW www;                                                  //Http组件
     public delegate void HandlerDelegate(System.Object param);
 
     private List<DownloadItem> downloadList = new List<DownloadItem>(); //下载队列
-    private DownloadType m_downloadType = DownloadType.type_bytes;      //下载文件类型
-    private String m_url = "";                                          //下载的地址
-    private HandlerDelegate m_delegate = null;                          //回调方法
+    private DownloadType downloadType = DownloadType.type_bytes;      //下载文件类型
+    private String url = "";                                          //下载的地址
+    private HandlerDelegate handlerDelegate = null;                          //回调方法
 
-    private bool m_bIsBeginRequest = false;                             //是否开始请求了
-    private bool m_bIsDone = true;                                      //是否请求结束了
+    private bool bIsBeginRequest = false;                             //是否开始请求了
+    private bool bIsDone = true;                                      //是否请求结束了
 
     public static WebManager Instance
     {
@@ -41,15 +43,11 @@ public class WebManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        if (instance != null && instance != this)
-        {
+        if (instance != null && 
+            instance != this)
             Destroy(this.gameObject);
-        }
         else
-        {
             instance = this;
-        }
-
         DontDestroyOnLoad(this.gameObject);
 	}
 	
@@ -57,53 +55,61 @@ public class WebManager : MonoBehaviour
 	void Update () 
     {
         //查看http请求是否有返回了
-        if (m_bIsBeginRequest)
+        if (bIsBeginRequest)
         {
             //下载是否结束了
-            if (m_www.isDone)
+            if (www.isDone)
             {
-                if (m_www.error != null)
+                if (www.error != null)
                 {
-                    Debug.Log(m_www.error);
+                    Debug.Log(www.error);
                 }
                 else
                 {
-                    if (m_delegate != null)
+                    if (handlerDelegate != null)
                     {
-                        if (m_downloadType == DownloadType.type_bytes)
+                        if (downloadType == DownloadType.type_bytes)
                         {
                             //二进制
-                            m_delegate.Invoke(m_www.bytes);
+                            handlerDelegate.Invoke(www.bytes);
                         }
-                        else if (m_downloadType == DownloadType.type_txt)
+                        else if (downloadType == DownloadType.type_txt || 
+                                 downloadType == DownloadType.type_url)
                         {
                             //文本
-                            m_delegate.Invoke(m_www.text);
+                            handlerDelegate.Invoke(www.text);
                         }
                     }
                 }
-                m_bIsDone = true;
-                m_bIsBeginRequest = false;
-                m_delegate = null;
+                bIsDone = true;
+                bIsBeginRequest = false;
+                handlerDelegate = null;
             }
         }
-        //空闲时，开始下一个下载
         else
         {
-            if (m_bIsDone)
+            //空闲时，开始下一个下载
+            if (bIsDone)
             {
                 if (downloadList.Count > 0)
                 {
                     //取第一个下载项
                     DownloadItem downloadItem = downloadList[0];
-                    m_downloadType = downloadItem.downloadType;
-                    m_url = downloadItem.url;
-                    m_delegate = downloadItem.callBack;
+                    downloadType = downloadItem.downloadType;
+                    url = downloadItem.url;
+                    handlerDelegate = downloadItem.callBack;
                     downloadList.RemoveAt(0);
-
-                    m_www = new WWW(m_url);
-                    m_bIsBeginRequest = true;
-                    m_bIsDone = false;
+                    if (downloadType == DownloadType.type_url)
+                    {
+                        byte[] requestParams = downloadItem.requestParams;
+                        www = new WWW(url, requestParams);//发送请求  
+                    }
+                    else
+                    {
+                        www = new WWW(url);
+                    }
+                    bIsBeginRequest = true;
+                    bIsDone = false;
                 }
             }
         }
@@ -122,6 +128,22 @@ public class WebManager : MonoBehaviour
         downloadItem.downloadType = downloadType;
         downloadItem.url = url;
         downloadItem.callBack = callBack;
+        downloadList.Add(downloadItem);
+    }
+
+    /// <summary>
+    /// 添加一个http请求
+    /// </summary>
+    /// <param name="url">请求地址</param>
+    /// <param name="requestParams">请求参数</param>
+    /// <param name="callBack">请求回调</param>
+    public void addHttpRequest(String url, String requestParams, HandlerDelegate callBack)
+    {
+        DownloadItem downloadItem = new DownloadItem();
+        downloadItem.downloadType = DownloadType.type_url;
+        downloadItem.url = url;
+        downloadItem.callBack = callBack;
+        downloadItem.requestParams = UTF8Encoding.UTF8.GetBytes(requestParams);
         downloadList.Add(downloadItem);
     }
 }
