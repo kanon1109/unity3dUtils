@@ -7,15 +7,15 @@ public class WebManagerTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        WebManager.Instance.addDownload(DownloadType.type_txt, "http://gs2.zsg.ecngame.com/apple/server_list_appstore.xml", downLoadCallBackHandler);
+        //WebManager.Instance.addDownload(DownloadType.type_txt, "http://gs2.zsg.ecngame.com/apple/server_list_appstore.xml", downLoadCallBackHandler);
         
         //测试请求
-        WebManager.Instance.addHttpRequest("http://gs2.zsg.ecngame.com/apple/server_list_appstore.xml", "", requestCallBack);
+        WebManager.Instance.addHttpRequest("http://127.0.0.1/t/test.php", "test", requestCallBack);
 	}
 
-    private void requestCallBack(object param)
+    void requestCallBack(System.Object param)
     {
-        print(param.ToString());
+        print("requestCallBack " + param.ToString());
     }
 
 
