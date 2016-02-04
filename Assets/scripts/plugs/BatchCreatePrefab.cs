@@ -34,7 +34,11 @@ public class BatchCreatePrefab
     {
         string targetDir = Application.dataPath + TARGET_DIR;
         string originDir = Application.dataPath + ORIGIN_DIR;
-        EditorUtility.DisplayProgressBar("创建prefab", "正在创建prefab中...", 0f);
+        if (!Directory.Exists(originDir))
+        {
+            EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
+            return;
+        }
         if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
         if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
         Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
@@ -53,7 +57,11 @@ public class BatchCreatePrefab
     {
         string targetDir = Application.dataPath + TARGET_DIR;
         string originDir = Application.dataPath + ORIGIN_DIR;
-        EditorUtility.DisplayProgressBar("创建prefab", "正在创建prefab中...", 0f);
+        if (!Directory.Exists(originDir))
+        {
+            EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
+            return;
+        } 
         if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
         if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
         Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
