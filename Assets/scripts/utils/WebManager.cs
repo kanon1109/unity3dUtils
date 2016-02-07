@@ -7,7 +7,8 @@ public enum DownloadType
 {
     type_bytes,         //2进制压缩包
     type_txt,           //文本
-    type_url            //http请求
+    type_url,           //http请求
+    type_assetBundle    //资源包
 }
 
 public class WebManager : MonoBehaviour 
@@ -68,7 +69,8 @@ public class WebManager : MonoBehaviour
                 {
                     if (handlerDelegate != null)
                     {
-                        if (downloadType == DownloadType.type_bytes)
+                        if (downloadType == DownloadType.type_bytes || 
+                            downloadType == DownloadType.type_assetBundle)
                         {
                             //二进制
                             handlerDelegate.Invoke(www.bytes);

@@ -7,19 +7,25 @@ using UnityEngine.UI;
 /// </summary>
 public class BatchCreatePrefab
 {
+    private const string ORIGIN_DIR = "\\Atlas"; //需要转换的目录(手动修改目录)
+    private const string TARGET_DIR = "\\Resources\\prefabs"; //转换后放入prefab的目录 (此目录每次会被清空)
     /// <summary>
     /// 将某个gameObject下的所有子对象批量转换Sprite prefab
     /// </summary>
     [MenuItem("Tools/batchCreatePrefab All Children")]
     public static void batchCreateSpritePrefab()
     {
+        string targetDir = Application.dataPath + TARGET_DIR;
+        //如果目录不存在创建空的目标目录
+        if (!Directory.Exists(targetDir)) 
+            Directory.CreateDirectory(targetDir);
         //获取选中的对象
         Transform tParent = ((GameObject)Selection.activeObject).transform;
         Object tempPrefab;
         foreach (Transform t in tParent)
         {
             MonoBehaviour.print(t.gameObject.name);
-            tempPrefab = PrefabUtility.CreateEmptyPrefab("Assets/Prefab/" + t.gameObject.name + ".prefab");
+            tempPrefab = PrefabUtility.CreateEmptyPrefab("Assets" + TARGET_DIR.Replace("\\", "/") + "/" + t.gameObject.name + ".prefab");
             tempPrefab = PrefabUtility.ReplacePrefab(t.gameObject, tempPrefab);
         }
     }
@@ -27,8 +33,6 @@ public class BatchCreatePrefab
     /// <summary>
     /// 将目录下所有图片转成Sprite prefab 
     /// </summary>
-    private const string ORIGIN_DIR = "\\Atlas"; //需要转换的目录(手动修改目录)
-    private const string TARGET_DIR = "\\Resources\\prefabs"; //转换后放入prefab的目录 (此目录每次会被清空)
     [MenuItem("Tools/batchCreateSpritePrefabInPath")]
     public static void batchCreateSpritePrefabInPath()
     {
