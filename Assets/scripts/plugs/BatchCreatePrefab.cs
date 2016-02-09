@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if UNITY_EDITOR
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -156,3 +157,4 @@ public class BatchCreatePrefab
         EditorUtility.ClearProgressBar();
     }
 }
+#endif
