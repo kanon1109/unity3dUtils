@@ -19,7 +19,7 @@ public class CreateAssetBunldes
         // Create the array of bundle build details.
         AssetBundleBuild[] buildMap = new AssetBundleBuild[1];
         buildMap[0].assetBundleName = "test.assetbundle";//打包的资源包名称 随便命名
-        string resStr = "Assets/Resources/prefabs/1.prefab,Assets/Resources/prefabs/2.prefab";
+        string resStr = "Assets/resources/prefabs/1.prefab,Assets/resources/prefabs/2.prefab,Assets/sound/test.mp3";
         buildMap[0].assetNames = resStr.Split(',');
         BuildPipeline.BuildAssetBundles(targetDir.Replace("\\", "/"), buildMap, 
                                         BuildAssetBundleOptions.UncompressedAssetBundle, 
