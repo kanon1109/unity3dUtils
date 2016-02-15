@@ -22,8 +22,8 @@ public class CreateAssetBunldes
         string resStr = "Assets/resources/prefabs/1.prefab,Assets/resources/prefabs/2.prefab,Assets/sound/test.mp3";
         buildMap[0].assetNames = resStr.Split(',');
         BuildPipeline.BuildAssetBundles(targetDir.Replace("\\", "/"), buildMap, 
-                                        BuildAssetBundleOptions.UncompressedAssetBundle, 
-                                        BuildTarget.StandaloneWindows);
+                                        BuildAssetBundleOptions.UncompressedAssetBundle,
+                                        BuildTarget.Android);
     }
 }
 #endif
