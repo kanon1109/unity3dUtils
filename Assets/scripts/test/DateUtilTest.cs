@@ -14,6 +14,9 @@ public class DateUtilTest : MonoBehaviour
         print("getDaysInCurMonth 当前月份天数 " + DateUtil.getDaysInCurMonth());
         print("getDiffDaysByMillisecond false 天数差 " + DateUtil.getDiffDaysByMillisecond(973007940000, 973011661000));
         print("getDiffDaysByMillisecond true 天数差 " + DateUtil.getDiffDaysByMillisecond(973007940000, 973011661000, true));
+
+        Debugger.log(this, "test", DateUtil.getDaysInCurMonth());
+
     }
 
     // Update is called once per frame

@@ -11,7 +11,13 @@ public class RandomTest : MonoBehaviour
 
     private void btnClickHandler()
     {
-        print("call random() " + RandomUtil.random());
+        for (int i = 0; i < 10; i++)
+        {
+            //print("call randint() " + RandomUtil.randint(1, 2));
+            print("call boolean() " + RandomUtil.boolean());
+        }
+
+        /*print("call random() " + RandomUtil.random());
         print("call randnum() " + RandomUtil.randnum(4.0f, 7.0f));
         print("call randint() " + RandomUtil.randint(1, 20));
         print("call randrange() " + RandomUtil.randrange(1, 20, 3));
@@ -34,6 +40,6 @@ public class RandomTest : MonoBehaviour
         {
             print(list[i]);
         }
-        print("---------------end shuffle()-------------");
+        print("---------------end shuffle()-------------");*/
     }
 }
