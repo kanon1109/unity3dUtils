@@ -72,8 +72,8 @@ public class RandomUtil
     ///  Random.sample([1, 2, 3, 4, 5],  3)  // Choose 3 elements
     ///  [4, 1, 5]
     /// </summary>
-    /// <param name="list"></param>
-    /// <param name="num"></param>
+    /// <param name="list">需要采样的列表</param>
+    /// <param name="num">采样数量</param>
     /// <returns></returns>
     public static List<T> sample<T>(List<T> list, uint num)
     {
@@ -154,4 +154,28 @@ public class RandomUtil
 	{
         return (random() < chance) ? true : false;
 	}
+
+    /// <summary>
+    /// 随机采样某个列表的索引
+    /// </summary>
+    /// <param name="list">需要采样的列表</param>
+    /// <param name="num">采样数量</param>
+    /// <returns></returns>
+    public static List<int> sampleIndex<T>(List<T> list, uint num)
+    {
+        int len = list.Count;
+        if (num <= 0 || len < num)
+            throw new System.Exception("采样数量不够");
+        //最终输出的list
+        //存放已经放入元素的索引的list
+        List<int> indices = new List<int>();
+        for (int i = 0; i < num; ++i)
+        {
+            int index = Random.Range(0, len);
+            while (indices.IndexOf(index) >= 0)
+                index = Random.Range(0, len);
+            indices.Add(index);
+        }
+        return indices;
+    }
 }
