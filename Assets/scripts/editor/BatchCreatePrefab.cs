@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class BatchCreatePrefab
 {
     private const string ORIGIN_DIR = "\\Atlas"; //需要转换的目录(手动修改目录)
-    private const string TARGET_DIR = "\\Resources\\prefabs"; //转换后放入prefab的目录 (此目录每次会被清空)
+    private const string TARGET_DIR = "\\Resources\\prefabs"; //转换后放入prefab的目录 
     /// <summary>
     /// 将某个gameObject下的所有子对象批量转换Sprite prefab
     /// </summary>
@@ -44,8 +44,6 @@ public class BatchCreatePrefab
             EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
             return;
         }
-        //if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
-        //if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
         if (!File.Exists(targetDir)) Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
         DirectoryInfo originDirInfo = new DirectoryInfo(originDir);
         //创建prefab
@@ -67,8 +65,6 @@ public class BatchCreatePrefab
             EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
             return;
         } 
-        //if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
-        //if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
         if (!File.Exists(targetDir)) Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
         DirectoryInfo originDirInfo = new DirectoryInfo(originDir);
         //创建prefab
