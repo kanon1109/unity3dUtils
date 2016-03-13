@@ -44,9 +44,9 @@ public class BatchCreatePrefab
             EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
             return;
         }
-        if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
-        if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
-        Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
+        //if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
+        //if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
+        if (!File.Exists(targetDir)) Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
         DirectoryInfo originDirInfo = new DirectoryInfo(originDir);
         //创建prefab
         makeSpritePrefabs(originDirInfo.GetFiles("*.jpg", SearchOption.AllDirectories), targetDir);
@@ -67,9 +67,9 @@ public class BatchCreatePrefab
             EditorUtility.DisplayDialog("错误", originDir.Replace("\\", "/") + "目录不存在", "确定");
             return;
         } 
-        if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
-        if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
-        Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
+        //if (Directory.Exists(targetDir)) Directory.Delete(targetDir, true); //删除目标目录
+        //if (File.Exists(targetDir + ".meta")) File.Delete(targetDir + ".meta"); //删除目录的.meta文件
+        if (!File.Exists(targetDir)) Directory.CreateDirectory(targetDir); //如果目录不存在创建空的目标目录
         DirectoryInfo originDirInfo = new DirectoryInfo(originDir);
         //创建prefab
         makeImagePrefabs(originDirInfo.GetFiles("*.jpg", SearchOption.AllDirectories), targetDir);
@@ -100,14 +100,14 @@ public class BatchCreatePrefab
             go.GetComponent<RectTransform>().sizeDelta = new Vector2(sprite.rect.width, 
                                                                      sprite.rect.height);
             EditorUtility.DisplayProgressBar("创建" + sprite.name, "创建" + sprite.name, 1f);
-            //获取目标路径
-            string targetPath = assetPath.Replace("Assets" + ORIGIN_DIR + "\\", "");
+            //获取图片名称
+            string imageName = assetPath.Replace("Assets" + ORIGIN_DIR + "\\", "");
             //去掉后缀
-            targetPath = targetPath.Substring(0, targetPath.IndexOf("."));
+            imageName = imageName.Substring(0, imageName.IndexOf("."));
             //得到最终路径
-            targetPath = targetDir + "\\" + targetPath + ".prefab";
+            string prefabPath = targetDir + "\\" + imageName + ".prefab";
             //得到应用当前目录的路径
-            string prefabPath = targetPath.Substring(targetPath.IndexOf("Assets"));
+            prefabPath = prefabPath.Substring(prefabPath.IndexOf("Assets"));
             //创建目录
             Directory.CreateDirectory(prefabPath.Substring(0, prefabPath.LastIndexOf("\\")));
             //生成预制件
@@ -139,14 +139,14 @@ public class BatchCreatePrefab
             GameObject go = new GameObject(sprite.name);
             go.AddComponent<SpriteRenderer>().sprite = sprite;
             EditorUtility.DisplayProgressBar("创建" + sprite.name, "创建" + sprite.name, 1f);
-            //获取目标路径
-            string targetPath = assetPath.Replace("Assets" + ORIGIN_DIR + "\\", "");
+            //获取图片名称
+            string imageName = assetPath.Replace("Assets" + ORIGIN_DIR + "\\", "");
             //去掉后缀
-            targetPath = targetPath.Substring(0, targetPath.IndexOf("."));
+            imageName = imageName.Substring(0, imageName.IndexOf("."));
             //得到最终路径
-            targetPath = targetDir + "\\" + targetPath + ".prefab";
+            string prefabPath = targetDir + "\\" + imageName + ".prefab";
             //得到应用当前目录的路径
-            string prefabPath = targetPath.Substring(targetPath.IndexOf("Assets"));
+            prefabPath = prefabPath.Substring(prefabPath.IndexOf("Assets"));
             //创建目录
             Directory.CreateDirectory(prefabPath.Substring(0, prefabPath.LastIndexOf("\\")));
             //生成预制件
