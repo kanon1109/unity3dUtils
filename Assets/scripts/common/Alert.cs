@@ -44,10 +44,11 @@ class Alert
         if (alertGo == null)
         {
             alertGo = Resources.Load("prefabs/Alert") as GameObject;
-            alertGo = MonoBehaviour.Instantiate(alertGo, new Vector3(0, 50), new Quaternion()) as GameObject;
+            alertGo = MonoBehaviour.Instantiate(alertGo, new Vector3(), new Quaternion()) as GameObject;
             alertGo.name = "alert";
             alertGo.transform.SetParent(parent);
-            alertGo.transform.localPosition = new Vector3();
+            alertGo.transform.localPosition = new Vector3(x, y);
+            alertGo.transform.localScale = Vector3.one;
         }
         //背景
         GameObject bg = alertGo.transform.FindChild("bg").gameObject;
@@ -65,7 +66,6 @@ class Alert
         cancelBtn.onClick.AddListener(cancelClickHandler);
 
         cancelBtn.gameObject.SetActive(showCancel);
-
         if (!showCancel)
             confirmBtn.gameObject.transform.localPosition = new Vector3(0, cancelBtn.gameObject.transform.localPosition.y);
         else

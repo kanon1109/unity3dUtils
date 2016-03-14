@@ -12,7 +12,7 @@ public class FileManagerTest : MonoBehaviour
 	// Use this for initialization
     void Start() 
     {
-        FileManager.downLoadByte("http://192.168.18.63/test/cfg/cfg_001.zip", downLoadByteComplete);
+        FileManager.downLoadByte("http://192.168.1.50/test/cfg/cfg_001.zip", downLoadByteComplete);
 	}
 
     public void downLoadByteComplete(object data)
