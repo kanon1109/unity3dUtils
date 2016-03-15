@@ -9,6 +9,16 @@ class Alert
     private static GameObject alertGo = null;
     //默认的画布
     private static Transform parent = null;
+    //文本容器
+    private static GameObject textGo;
+    //内容文本
+    private static Text contentText;
+    //确定按钮
+    private static Button confirmBtn;
+    //取消按钮
+    private static Button cancelBtn;
+    private static Text confirmBtnLabel;
+    private static Text cancelBtnLabel;
     /// <summary>
     /// 设置父节点
     /// </summary>
@@ -49,18 +59,24 @@ class Alert
             alertGo.transform.SetParent(parent);
             alertGo.transform.localPosition = new Vector3(x, y);
             alertGo.transform.localScale = Vector3.one;
+        
+            //背景
+            textGo = alertGo.transform.FindChild("contentTxt").gameObject;
+            contentText = textGo.GetComponent<Text>();
+            confirmBtn = alertGo.transform.FindChild("confirmBtn").gameObject.GetComponent<Button>();
+            cancelBtn = alertGo.transform.FindChild("cancelBtn").gameObject.GetComponent<Button>();
+            confirmBtnLabel = confirmBtn.gameObject.transform.FindChild("Text").gameObject.GetComponent<Text>();
+            cancelBtnLabel = cancelBtn.gameObject.transform.FindChild("Text").gameObject.GetComponent<Text>();
+            confirmBtnLabel.text = Language.getValue("confirmBtn");
+            cancelBtnLabel.text = Language.getValue("cancelBtn");
         }
-        //背景
-        GameObject bg = alertGo.transform.FindChild("bg").gameObject;
-        bg.GetComponent<RectTransform>().sizeDelta = new Vector2(bgWidth, bgHeight);
 
-        GameObject textGo = alertGo.transform.FindChild("text").gameObject;
-        Text contentText = textGo.GetComponent<Text>();
-        contentText.text = content;
+        alertGo.GetComponent<RectTransform>().sizeDelta = new Vector2(bgWidth, bgHeight);
         textGo.GetComponent<RectTransform>().sizeDelta = new Vector2(textWidth, textHeight);
+        contentText.text = content;
 
-        Button confirmBtn = alertGo.transform.FindChild("confirmBtn").gameObject.GetComponent<Button>();
-        Button cancelBtn = alertGo.transform.FindChild("cancelBtn").gameObject.GetComponent<Button>();
+        confirmBtn.onClick.RemoveAllListeners();
+        cancelBtn.onClick.RemoveAllListeners();
         confirmBtn.onClick.AddListener(confirmHandler);
         cancelBtn.onClick.AddListener(cancelHandler);
         cancelBtn.onClick.AddListener(cancelClickHandler);
@@ -71,11 +87,6 @@ class Alert
         else
             confirmBtn.gameObject.transform.localPosition = new Vector3(-cancelBtn.gameObject.transform.localPosition.x,
                                                                          cancelBtn.gameObject.transform.localPosition.y);
-
-        Text label = confirmBtn.gameObject.transform.FindChild("Text").gameObject.GetComponent<Text>();
-        label.text = Language.getValue("confirmBtn");
-        label = cancelBtn.gameObject.transform.FindChild("Text").gameObject.GetComponent<Text>();
-        label.text = Language.getValue("cancelBtn");
 
         alertGo.SetActive(true);
         //设置深度节点
@@ -111,3 +122,5 @@ class Alert
         alertGo.SetActive(false);
     }
 }
+
+

@@ -683,5 +683,7 @@
 	
 	<!-- 其他 -->
 	<alert_hp_item>主公,您的体力不足,吃个烤猪腿就能快速恢复体力哦!</alert_hp_item>
-	<alert_mp_item>主公,您的精力不足,吃个叉烧包就能快速恢复体力哦!</alert_mp_item>
+  <alert_mp_item>主公,您的精力不足,吃个叉烧包就能快速恢复体力哦!</alert_mp_item>
+  <confirmBtn>确定</confirmBtn>
+  <cancelBtn>取消</cancelBtn>
 </language>

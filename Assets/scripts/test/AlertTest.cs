@@ -4,18 +4,19 @@ using UnityEngine.UI;
 
 public class AlertTest : MonoBehaviour
 {
-    public Canvas ui;
+    public Transform parent;
     public Button btn;
 	// Use this for initialization
 	void Start () 
     {
-        Alert.initParent(ui.transform);
+        Language.init("language");
+        Alert.initParent(parent);
         btn.onClick.AddListener(clickHandler);
 	}
 	
     void clickHandler()
     {
-        Alert.show(0, 100, 400, 300, 310, 230, "asasdw阿斯大声", true, confirmHandler, cancelHandler);
+        Alert.show(0, 0, 400, 300, 310, 230, "阿斯大声阿斯大声阿斯大声阿斯大声阿斯大声阿斯大声阿斯大声阿斯大声阿斯大声", true, confirmHandler, cancelHandler);
     }
 
     void confirmHandler()
