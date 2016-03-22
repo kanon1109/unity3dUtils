@@ -9,7 +9,16 @@ public class DelayActive : MonoBehaviour
     //是否自动销毁
     public bool autoDestroy = false;
     //是否结束
-    private bool isComplete = false;
+    private bool isComplete = true;
+    /// <summary>
+    /// 开始
+    /// </summary>
+    public void start(float millisecond = 1000)
+    {
+        this.millisecond = millisecond;
+        this.isComplete = false;
+    }
+
     void FixedUpdate()
     {
         if (this.isComplete) return;
