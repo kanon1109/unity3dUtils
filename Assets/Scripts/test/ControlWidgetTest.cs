@@ -19,12 +19,10 @@ public class ControlWidgetTest:MonoBehaviour
 
     private void onMouseMoveHandler()
     {
-        print("cw.controlAngle " + cw.controlRad);
+        float dx = Mathf.Cos(cw.controlRad) * this.speed * cw.controlRate;
+        float dy = Mathf.Sin(cw.controlRad) * this.speed * cw.controlRate;
+
         img.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, cw.controlAngle - 90));
-        print("cw.controlDy " + cw.controlDy + "cw.controlDx " + cw.controlDx);
-        float angle = Mathf.Atan2(cw.controlDy, cw.controlDx);
-        float dx = Mathf.Cos(angle) * this.speed * cw.controlRate;
-        float dy = Mathf.Sin(angle) * this.speed * cw.controlRate;
         ball.transform.localPosition += new Vector3(dx, dy);
     }
 }
