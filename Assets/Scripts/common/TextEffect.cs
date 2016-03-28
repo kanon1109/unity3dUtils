@@ -16,8 +16,6 @@ public class TextEffect:MonoBehaviour
     private ShowCompleteHandler showCompleteHandler;
     //内容文字
     private string contentStr;
-    //效果是否结束
-    private bool isComplete = false;
     /// <summary>
     /// 逐字显示
     /// </summary>
@@ -28,7 +26,6 @@ public class TextEffect:MonoBehaviour
     public void progressShow(Text text, string content, float delay, ShowCompleteHandler handler = null)
     {
         this.index = 0;
-        this.isComplete = false;
         this.txt = text;
         this.contentStr = content;
         this.txt.text = "";
@@ -57,7 +54,6 @@ public class TextEffect:MonoBehaviour
         if (this.index > this.strAry.Length - 1)
         {
             this.timer.stop();
-            this.isComplete = true;
             if (this.showCompleteHandler != null) 
                 this.showCompleteHandler.Invoke();
         }

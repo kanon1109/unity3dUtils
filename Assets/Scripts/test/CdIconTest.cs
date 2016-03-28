@@ -13,6 +13,11 @@ public class CdIconTest : MonoBehaviour
 
     private void btnClickHandler()
     {
-        cdIcon.start(60f);
+        cdIcon.start(3f, cdCompleteHandler);
+    }
+
+    private void cdCompleteHandler()
+    {
+        print("cdCompleteHandler");
     }
 }
