@@ -5,9 +5,9 @@ public class ControlWidget : MonoBehaviour
     //控制类型
     public enum fixedType
     {
-        UNFIXED, //不固定摇杆
+        UNFIXED,   //不固定摇杆
         HALFFIXED, //半固定摇杆
-        FIXED    //固定摇杆
+        FIXED      //固定摇杆
     }
     //鼠标移动
     public delegate void OnMouseMoveHandler();
@@ -164,6 +164,7 @@ public class ControlWidget : MonoBehaviour
                 if (dis > maxMoveDis) dis = maxMoveDis;
             }
 
+            //计算出摇杆新的位置
             float x = Mathf.Cos(this.angle) * dis + prevPosX;
             float y = Mathf.Sin(this.angle) * dis + prevPosY;
 
@@ -194,5 +195,4 @@ public class ControlWidget : MonoBehaviour
                 this.onMouseMoveHandler.Invoke();
         }
     }
-
 }
