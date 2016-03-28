@@ -5,6 +5,9 @@ using UnityEngine.UI;
 /// </summary>
 public class CdIcon : MonoBehaviour
 {
+    //回调
+    public delegate void CdCompleteHandler();
+    private CdCompleteHandler cdCompleteHandler = null;
     //黑遮
     public Image mask;
     //时间文本
@@ -35,11 +38,11 @@ public class CdIcon : MonoBehaviour
     /// 开始
     /// </summary>
     /// <param name="duration">持续时间（秒数）</param>
-    public void start(float duration)
+    public void start(float duration, CdCompleteHandler cdCompleteHandler = null)
     {
         this.duration = duration;
-        if (this.timeTxt != null) 
-            this.timeTxt.gameObject.SetActive(true);
+        this.cdCompleteHandler = cdCompleteHandler;
+        if (this.timeTxt != null) this.timeTxt.gameObject.SetActive(true);
         this.setValue(1f);
     }
 
@@ -51,7 +54,12 @@ public class CdIcon : MonoBehaviour
         {
             this.timeTxt.text = Mathf.CeilToInt(this.duration * this.mask.fillAmount).ToString();
             if (this.mask.fillAmount == 0)
+            {
                 this.timeTxt.gameObject.SetActive(false);
+                //执行回调
+                if (this.cdCompleteHandler != null)
+                    this.cdCompleteHandler.Invoke();
+            }
         }
     }
 }
