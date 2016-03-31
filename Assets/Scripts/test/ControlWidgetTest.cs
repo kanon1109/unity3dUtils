@@ -14,7 +14,7 @@ public class ControlWidgetTest:MonoBehaviour
 
     void Start()
     {
-        this.cw.setOnMouseMoveHandler(onMouseMoveHandler);
+        this.cw.onMouseMoveHandler = onMouseMoveHandler;
     }
 
     private void onMouseMoveHandler()

@@ -10,12 +10,10 @@ public class ControlWidget : MonoBehaviour
         FIXED      //固定摇杆
     }
     //鼠标移动
-    public delegate void OnMouseMoveHandler();
-    public delegate void OnMouseDownHandler();
-    public delegate void OnMouseUpHandler();
-    private OnMouseMoveHandler onMouseMoveHandler = null;
-    private OnMouseDownHandler onMouseDownHandler = null;
-    private OnMouseUpHandler onMouseUpHandler = null;
+    public delegate void OnMouseEventHandler();
+    public OnMouseEventHandler onMouseMoveHandler = null;
+    public OnMouseEventHandler onMouseDownHandler = null;
+    public OnMouseEventHandler onMouseUpHandler = null;
     //摇杆图片
     public Image controlImage;
     //底座
@@ -64,33 +62,6 @@ public class ControlWidget : MonoBehaviour
     public float controlRate
     {
         get { return rate; }
-    }
-
-    /// <summary>
-    /// 监听鼠标事件
-    /// </summary>
-    /// <param name="onMouseMoveHandler">鼠标移动事件</param>
-    public void setOnMouseMoveHandler(OnMouseMoveHandler onMouseMoveHandler)
-    {
-        this.onMouseMoveHandler = onMouseMoveHandler;
-    }
-
-    /// <summary>
-    /// 监听鼠标事件
-    /// </summary>
-    /// <param name="onMouseDownHandler">鼠标按下事件</param>
-    public void setOnMouseDownHandler(OnMouseDownHandler onMouseDownHandler)
-    {
-        this.onMouseDownHandler = onMouseDownHandler;
-    }
-
-    /// <summary>
-    /// 监听鼠标事件
-    /// </summary>
-    /// <param name="onMouseUpHandler">鼠标抬起事件</param>
-    public void setOnMouseUpHandler(OnMouseUpHandler onMouseUpHandler)
-    {
-        this.onMouseUpHandler = onMouseUpHandler;
     }
 
     public void Start()
