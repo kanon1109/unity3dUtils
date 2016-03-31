@@ -9,7 +9,7 @@ public class ControlWidget : MonoBehaviour
         HALFFIXED, //半固定摇杆
         FIXED      //固定摇杆
     }
-    //鼠标移动
+    //鼠标事件
     public delegate void OnMouseEventHandler();
     public OnMouseEventHandler onMouseMoveHandler = null;
     public OnMouseEventHandler onMouseDownHandler = null;

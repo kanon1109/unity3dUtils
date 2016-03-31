@@ -1,4 +1,4 @@
-﻿Shader "UI/GaussBlur" {
+﻿Shader "custom/image/GaussBlur" {
     Properties {
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _TextureSize ("_TextureSize",Float) = 256

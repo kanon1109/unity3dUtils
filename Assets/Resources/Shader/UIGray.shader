@@ -1,4 +1,4 @@
-﻿Shader "UI/GrayColor"
+﻿Shader "custom/image/GrayColor"
 {
     Properties
     {
