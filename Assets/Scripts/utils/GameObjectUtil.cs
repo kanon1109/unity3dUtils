@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 public class GameObjectUtil
 {
     /// <summary>
@@ -19,6 +18,23 @@ public class GameObjectUtil
             if (t.name == name)
                 return t.gameObject;
         }
+        return null;
+    }
+
+    /// <summary>
+    /// 碰撞检测（3d物品的碰撞）
+    /// </summary>
+    /// <param name="position">碰撞点</param>
+    /// <param name="layerMask">只选定Layermask层内的碰撞器，其它层内碰撞器忽略 (1 -- layerMask.NameToLayer("xxx"))</param>
+    /// <returns></returns>
+    public static GameObject hitTestPoint(Vector3 position, int layerMask = -1)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(position);
+        RaycastHit hitInfo;
+        //仅找第一个对象,可以设置layer过滤
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
+            return hitInfo.transform.gameObject;
+
         return null;
     }
 }
