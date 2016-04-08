@@ -11,6 +11,9 @@ public class URLImage : Image
     private string name;
     //使用图片原始大小
     private bool useNativeSize = true;
+    //http下载管理器
+    private WebManager wm;
+
     /// <summary>
     /// 加载图片
     /// </summary>
@@ -19,20 +22,26 @@ public class URLImage : Image
     /// <param name="useNativeSize">使用图片原始大小</param>
     public void load(string url, string saveName = "", bool useNativeSize = true)
     {
+        if (this.gameObject.GetComponent<WebManager>() == null)
+            this.gameObject.AddComponent<WebManager>();
+
+        if (this.wm == null) 
+            this.wm = this.gameObject.GetComponent<WebManager>();
+
         this.url = url;
         this.name = saveName;
         this.useNativeSize = useNativeSize;
         //如果名称为空取md5
         if (saveName == "") this.name = MD5Util.hash(url);
         //下载文件
-        FileManager.downLoadByte(url, downCompleteHandler);
+        FileManager.downLoadByte(this.wm, url, downCompleteHandler);
     }
 
     //下载完成
     private void downCompleteHandler(object param)
     {
         FileManager.saveByte(this.name, param);
-        Texture2D tex2d = WebManager.Instance.www.texture;
+        Texture2D tex2d = this.wm.www.texture;
         this.sprite = Sprite.Create(tex2d, 
                                     new Rect(0, 0, tex2d.width, tex2d.height), 
                                     new Vector2(0, 0));

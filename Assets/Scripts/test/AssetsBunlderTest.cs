@@ -6,9 +6,16 @@ public class AssetsBunlderTest : MonoBehaviour
 {
     public GameObject infoTxt;
     public GameObject ui;
+    private WebManager wm;
     void Start()
     {
-        WebManager.Instance.addDownload(DownloadType.type_assetBundle, "http://192.168.1.50/abs/ABs.zip", requestCallBack);
+        if (this.gameObject.GetComponent<WebManager>() == null)
+            this.gameObject.AddComponent<WebManager>();
+
+        if (this.wm == null)
+            this.wm = this.gameObject.GetComponent<WebManager>();
+
+        this.wm.addDownload(DownloadType.type_assetBundle, "http://192.168.1.50/abs/ABs.zip", requestCallBack);
     }
 
     private void requestCallBack(object data)
@@ -42,9 +49,6 @@ public class AssetsBunlderTest : MonoBehaviour
         GameObject go = Instantiate(prefab, new Vector3(), new Quaternion()) as GameObject;
         go.transform.localPosition = new Vector3(200, 100);
         go.transform.SetParent(ui.transform);
-
-        
-
         ab.Unload(false);
     }
 }

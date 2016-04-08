@@ -18,23 +18,25 @@ public class FileManager
     /// <summary>
     /// 下载文件
     /// </summary>
+    /// <param name="wm">http请求管理对象</param>
     /// <param name="path">文件地址</param>
     /// <param name="completeHandler">下载回调</param>
     /// <returns></returns>
-    public static void downLoadTxt(String path, WebManager.HandlerDelegate completeHandler)
+    public static void downLoadTxt(WebManager wm, String path, WebManager.HandlerDelegate completeHandler)
     {
-        WebManager.Instance.addDownload(DownloadType.type_txt, path, completeHandler);
+        wm.addDownload(DownloadType.type_txt, path, completeHandler);
     }
 
     /// <summary>
     /// 下载二进制文件
     /// </summary>
+    /// <param name="wm">http请求管理对象</param>
     /// <param name="path">路径</param>
     /// <param name="completeHandler">下载回调</param>
     /// <returns></returns>
-    public static void downLoadByte(String path, WebManager.HandlerDelegate completeHandler)
+    public static void downLoadByte(WebManager wm, String path, WebManager.HandlerDelegate completeHandler)
     {
-        WebManager.Instance.addDownload(DownloadType.type_bytes, path, completeHandler);
+        wm.addDownload(DownloadType.type_bytes, path, completeHandler);
     }
 
     /// <summary>

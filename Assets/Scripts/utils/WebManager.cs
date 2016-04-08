@@ -22,36 +22,24 @@ public class WebManager : MonoBehaviour
         public byte[]               requestParams;
         
     }
-
-    private static WebManager instance = null;
-
-    private WWW _www;                                                  //Http组件
+    //Http组件
+    private WWW _www;                                                  
     public WWW www { get { return _www; }}
     public delegate void HandlerDelegate(System.Object param);
-
-    private List<DownloadItem> downloadList = new List<DownloadItem>(); //下载队列
-    private DownloadType downloadType = DownloadType.type_bytes;      //下载文件类型
-    private String url = "";                                          //下载的地址
-    private HandlerDelegate handlerDelegate = null;                          //回调方法
-
-    private bool bIsBeginRequest = false;                             //是否开始请求了
-    private bool bIsDone = true;                                      //是否请求结束了
-
-    public static WebManager Instance
-    {
-        get { return instance; }
-    }
-
-	// Use this for initialization
-	void Start () 
-    {
-        if (instance != null && 
-            instance != this)
-            Destroy(this.gameObject);
-        else
-            instance = this;
-        DontDestroyOnLoad(this.gameObject);
-	}
+    //下载队列
+    private List<DownloadItem> downloadList = new List<DownloadItem>();
+    //下载文件类型
+    private DownloadType downloadType = DownloadType.type_bytes;
+    //下载的地址 
+    private String url = "";
+    //回调方法
+    private HandlerDelegate handlerDelegate = null;
+    //错误回调方法
+    public HandlerDelegate errorHandlerDelegate = null;
+    //是否开始请求了
+    private bool bIsBeginRequest = false;
+    //是否请求结束了
+    private bool bIsDone = true;                                      
 	
 	// Update is called once per frame
 	void Update () 
@@ -65,6 +53,9 @@ public class WebManager : MonoBehaviour
                 if (_www.error != null)
                 {
                     Debug.Log(_www.error);
+                    //回调
+                    if (this.errorHandlerDelegate != null)
+                        this.errorHandlerDelegate.Invoke(_www.error);
                 }
                 else
                 {
