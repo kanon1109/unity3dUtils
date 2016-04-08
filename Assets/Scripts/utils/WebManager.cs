@@ -25,7 +25,8 @@ public class WebManager : MonoBehaviour
 
     private static WebManager instance = null;
 
-    private WWW www;                                                  //Http组件
+    private WWW _www;                                                  //Http组件
+    public WWW www { get { return _www; }}
     public delegate void HandlerDelegate(System.Object param);
 
     private List<DownloadItem> downloadList = new List<DownloadItem>(); //下载队列
@@ -59,11 +60,11 @@ public class WebManager : MonoBehaviour
         if (bIsBeginRequest)
         {
             //下载是否结束了
-            if (www.isDone)
+            if (_www.isDone)
             {
-                if (www.error != null)
+                if (_www.error != null)
                 {
-                    Debug.Log(www.error);
+                    Debug.Log(_www.error);
                 }
                 else
                 {
@@ -73,13 +74,13 @@ public class WebManager : MonoBehaviour
                             downloadType == DownloadType.type_assetBundle)
                         {
                             //二进制
-                            handlerDelegate.Invoke(www.bytes);
+                            handlerDelegate.Invoke(_www.bytes);
                         }
                         else if (downloadType == DownloadType.type_txt || 
                                  downloadType == DownloadType.type_url)
                         {
                             //文本
-                            handlerDelegate.Invoke(www.text);
+                            handlerDelegate.Invoke(_www.text);
                         }
                     }
                 }
@@ -104,11 +105,11 @@ public class WebManager : MonoBehaviour
                     if (downloadType == DownloadType.type_url)
                     {
                         byte[] requestParams = downloadItem.requestParams;
-                        www = new WWW(url, requestParams);//发送请求  
+                        _www = new WWW(url, requestParams);//发送请求  
                     }
                     else
                     {
-                        www = new WWW(url);
+                        _www = new WWW(url);
                     }
                     bIsBeginRequest = true;
                     bIsDone = false;
