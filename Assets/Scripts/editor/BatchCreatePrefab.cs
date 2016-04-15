@@ -13,7 +13,7 @@ public class BatchCreatePrefab
     /// <summary>
     /// 将某个gameObject下的所有子对象批量转换Sprite prefab
     /// </summary>
-    [MenuItem("Tools/batchCreatePrefab All Children")]
+    [MenuItem("Tools/batch/batchCreatePrefab All Children")]
     public static void batchCreateSpritePrefab()
     {
         string targetDir = Application.dataPath + TARGET_DIR;

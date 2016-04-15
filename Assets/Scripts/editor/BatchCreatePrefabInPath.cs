@@ -10,7 +10,7 @@ public class BatchCreatePrefabInPath
     /// <summary>
     /// 将目录下所有图片转成Sprite prefab 
     /// </summary>
-    [MenuItem("Tools/batchCreateSpritePrefabInPath")]
+    [MenuItem("Tools/batch/batchCreateSpritePrefabInPath")]
     public static void batchCreateSpritePrefabInPath()
     {
         string targetDir = Application.dataPath + TARGET_DIR;
@@ -31,7 +31,7 @@ public class BatchCreatePrefabInPath
     /// <summary>
     /// 将目录下所有图片转成prefab 
     /// </summary>
-    [MenuItem("Tools/batchCreateImagePrefabInPath")]
+    [MenuItem("Tools/batch/batchCreateImagePrefabInPath")]
     public static void batchCreateImagePrefabInPath()
     {
         string targetDir = Application.dataPath + TARGET_DIR;

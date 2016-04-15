@@ -9,7 +9,7 @@ public class CreateAssetBunldes
 {
     //assetbunldes目录
     private const string ASSET_BUNLDES_DIR = "\\ABs";
-    [MenuItem("Tools/CreateAssetBunldes")]
+    [MenuItem("Tools/bunldes/CreateAssetBunldes")]
     public static void createAssetBunldes()
     {
         string targetDir = Application.dataPath + ASSET_BUNLDES_DIR;
