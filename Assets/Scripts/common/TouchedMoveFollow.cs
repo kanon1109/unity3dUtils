@@ -12,6 +12,8 @@ public class TouchedMoveFollow:MonoBehaviour
     private float mouseX;
     //鼠标位置y坐标
     private float mouseY;
+    //鼠标位置z坐标（如果小于0 则会产生反向的方向）
+    public float mouseZ = 10f;
     //需要跟随的对象
     public GameObject targetGo;
     //缓动系数
@@ -42,12 +44,12 @@ public class TouchedMoveFollow:MonoBehaviour
         {
             Vector3 mousePos = new Vector3(this.mouseX,
                                            this.mouseY,
-                                           this.targetGo.transform.localPosition.z); //必须把z坐标带入才能转化世界坐标
+                                           this.mouseZ); //必须把z坐标带入才能转化世界坐标
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             //缓动鼠标跟随公式
             float vx = (mousePos.x - this.targetGo.transform.localPosition.x) * this.ease;
             float vy = (mousePos.y - this.targetGo.transform.localPosition.y) * this.ease;
-            float vz = (mousePos.y - this.targetGo.transform.localPosition.y) * this.ease;
+            float vz = vy;
             if (this.usePosZ) vy = 0;
             else vz = 0;
             this.targetGo.transform.localPosition = new Vector3(this.targetGo.transform.localPosition.x + vx,
