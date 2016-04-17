@@ -1,4 +1,4 @@
-﻿Shader "custom/image/MotionBlurShader"
+﻿Shader "custom/image/MotionBlur"
 {
 	//------------------------------------【属性值】------------------------------------
 	Properties
