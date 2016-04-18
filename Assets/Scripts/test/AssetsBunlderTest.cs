@@ -6,16 +6,9 @@ public class AssetsBunlderTest : MonoBehaviour
 {
     public GameObject infoTxt;
     public GameObject ui;
-    private WebManager wm;
     void Start()
     {
-        if (this.gameObject.GetComponent<WebManager>() == null)
-            this.gameObject.AddComponent<WebManager>();
-
-        if (this.wm == null)
-            this.wm = this.gameObject.GetComponent<WebManager>();
-
-        this.wm.addDownload(DownloadType.type_assetBundle, "http://192.168.1.50/abs/ABs.zip", requestCallBack);
+        WebManager.instance.addDownload(DownloadType.type_assetBundle, "http://192.168.1.50/abs/ABs.zip", requestCallBack);
     }
 
     private void requestCallBack(object data)

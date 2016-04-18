@@ -9,11 +9,10 @@ public class FileManagerTest : MonoBehaviour
 {
     public GameObject infoTxt;
     public GameObject infoTxt2;
-    public WebManager wm;
 	// Use this for initialization
     void Start() 
     {
-        FileManager.downLoadByte(this.wm, "http://127.0.0.1/test/cfg/cfg_001.zip", downLoadByteComplete);
+        FileManager.downLoadByte("http://127.0.0.1/test/cfg/cfg_001.zip", downLoadByteComplete);
 	}
 
     public void downLoadByteComplete(object data)

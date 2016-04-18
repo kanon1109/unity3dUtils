@@ -39,8 +39,27 @@ public class WebManager : MonoBehaviour
     //是否开始请求了
     private bool bIsBeginRequest = false;
     //是否请求结束了
-    private bool bIsDone = true;                                      
-	
+    private bool bIsDone = true;
+    //单例
+    private static WebManager _instance;
+    public static WebManager instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType(typeof(WebManager)) as WebManager;
+                if (!_instance)
+                {
+                    GameObject container = new GameObject();
+                    container.name = "WebManager";
+                    _instance = container.AddComponent(typeof(WebManager)) as WebManager;
+                }  
+            }
+            return _instance;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () 
     {

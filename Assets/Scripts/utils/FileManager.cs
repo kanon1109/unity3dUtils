@@ -22,9 +22,9 @@ public class FileManager
     /// <param name="path">文件地址</param>
     /// <param name="completeHandler">下载回调</param>
     /// <returns></returns>
-    public static void downLoadTxt(WebManager wm, String path, WebManager.HandlerDelegate completeHandler)
+    public static void downLoadTxt(String path, WebManager.HandlerDelegate completeHandler)
     {
-        wm.addDownload(DownloadType.type_txt, path, completeHandler);
+        WebManager.instance.addDownload(DownloadType.type_txt, path, completeHandler);
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ public class FileManager
     /// <param name="path">路径</param>
     /// <param name="completeHandler">下载回调</param>
     /// <returns></returns>
-    public static void downLoadByte(WebManager wm, String path, WebManager.HandlerDelegate completeHandler)
+    public static void downLoadByte(String path, WebManager.HandlerDelegate completeHandler)
     {
-        wm.addDownload(DownloadType.type_bytes, path, completeHandler);
+        WebManager.instance.addDownload(DownloadType.type_bytes, path, completeHandler);
     }
 
     /// <summary>
